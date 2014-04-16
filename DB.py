@@ -9,6 +9,8 @@ import csv
 import sqlite3
 import shlex
 
+FILE = 'stocks.db'
+
 class DB:
     """Wrapper class for database operations.
 
@@ -51,7 +53,7 @@ class DB:
         query = self.c.execute('''SELECT count(*) FROM sqlite_master WHERE type='table' AND name='%s';''' % self.TABLE_SYM)
         # if not, create new table:
         if query.fetchone()[0] == 0:  # table does not exist
-            self.c.execute('''CREATE TABLE %s (symbol text, name text, IPO year, sector text, industry text)''' % self.TABLE_SYM)
+            self.c.execute('''CREATE TABLE %s (symbol text, name text, exchange text, IPO year, sector text, industry text)''' % self.TABLE_SYM)
 
         # check to see if the info table exists already
         query = self.c.execute('''SELECT count(*) FROM sqlite_master WHERE type='table' AND name='%s';''' % self.TABLE_INFO)

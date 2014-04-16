@@ -1,0 +1,2 @@
+Data retreived from nasdaq.com, e.g.
+http://www.nasdaq.com/screening/companies-by-industry.aspx?exchange=NYSE

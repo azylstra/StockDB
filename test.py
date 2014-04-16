@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
 from DB import DB
+from scripts import *
 
-d = DB('foo.db')
+load_all_exchange()
