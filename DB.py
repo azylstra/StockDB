@@ -47,7 +47,7 @@ class DB:
         # if not, create new table:
         if query.fetchone()[0] == 0:  # table does not exist
             self.c.execute('''CREATE TABLE %s
-                (date date, symbol text, open float, low float, high float, target float, high52 float, low52 float, volume float, eps float, eps_est_curr float, eps_est_next float, book float, ebitda float, price_sales float, price_book float, pe float peg float, peps_est_curr float, peps_est_next float, short float, div_yield float, div float, div_date date, ex_div_date date, day50_avg float, day200_avg float, market_cap float)''' % self.TABLE)
+                (date date, symbol text, open float, low float, high float, target float, high52 float, low52 float, volume float, eps float, eps_est_curr float, eps_est_next float, book float, ebitda float, price_sales float, price_book float, pe float, peg float, peps_est_curr float, peps_est_next float, short float, div_yield float, div float, div_date text, ex_div_date text, day50_avg float, day200_avg float, market_cap float)''' % self.TABLE)
 
         # check to see if the symbol table exists already
         query = self.c.execute('''SELECT count(*) FROM sqlite_master WHERE type='table' AND name='%s';''' % self.TABLE_SYM)

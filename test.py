@@ -1,6 +1,11 @@
 #!/usr/bin/python
 
-from DB import DB
+from DB import DB, FILE
 from scripts import *
+from fetch import *
 
-load_all_exchange()
+db = DB(FILE)
+
+#add_data_db('AAPL', db)
+
+add_all_to_db()
