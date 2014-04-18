@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # Wrap a sqlite3 database into a python class for simplicity
 # 
 # Author: Alex Zylstra

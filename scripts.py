@@ -45,7 +45,7 @@ def load_exchange(fname, delim='\t', exchange='', clear=False, header=True):
                 db.sql_query('INSERT INTO %s VALUES (?,?,?,?,?,?)' % db.TABLE_SYM, 
                     (sym,name,exchange,ipo,sector,industry,))
             except:
-                print('trouble with row: ', row)
+                print(('trouble with row: ', row))
 
 def load_all_exchange():
     """Shortcut script to load all exchange data from files."""
