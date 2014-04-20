@@ -150,16 +150,25 @@ def add_all_to_db():
     for row in query:
         symbols.append(row[0])
 
-    for sym in symbols:
-        # today's date:
-        dt = datetime.date.today()
-        date = str(dt.year) + '-' + str(dt.month) + '-' + str(dt.day)
-        # Check to see if the data is already there
-        query = db.sql_query('SELECT date from %s WHERE date=? AND symbol=?;' % db.TABLE, (date,sym,))
+    # store all errors encountered to pass back up the chain
+    errors = []
 
-        if len(query.fetchall()) == 0:
-            #print 'does not exist!'
-            add_data_db(sym, db)
+    for sym in symbols:
+        try:
+            # today's date:
+            dt = datetime.date.today()
+            date = str(dt.year) + '-' + str(dt.month) + '-' + str(dt.day)
+            # Check to see if the data is already there
+            query = db.sql_query('SELECT date from %s WHERE date=? AND symbol=?;' % db.TABLE, (date,sym,))
+
+            if len(query.fetchall()) == 0:
+                #print 'does not exist!'
+                add_data_db(sym, db)
+                db.db.commit()
+        except Exception as e:
+            errors.append(e)
+
+    return errors
 
 def load_old_csv(fname, sym=None):
     """Import data from an old CSV file, and add it to the database."""
@@ -239,4 +248,6 @@ def load_old_csv(fname, sym=None):
                         data['Market Cap'],)
 
                 db.sql_query('INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)' % db.TABLE, tbd)
+
+    db.db.commit()
 

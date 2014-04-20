@@ -4,10 +4,6 @@ from DB import DB, FILE
 from scripts import *
 from fetch import *
 
-db = DB(FILE)
+from run import run
 
-#add_data_db('AAPL', db)
-#load_all_exchange()
-#add_all_to_db()
-
-load_old_csv('/Users/alex/Desktop/AAPL.csv')
+load_csv_dir('/Users/alex/Desktop/data_csv')

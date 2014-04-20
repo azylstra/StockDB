@@ -6,6 +6,7 @@
 import os
 import csv
 from DB import DB, FILE
+from fetch import load_old_csv
 
 def load_exchange(fname, delim='\t', exchange='', clear=False, header=True):
     """Load exchange data (tickers and info about them) from a CSV file."""
@@ -52,4 +53,11 @@ def load_all_exchange():
     load_exchange('data_exchange/AMEX.tsv', exchange='AMEX', delim='\t', clear=True, header=True)
     load_exchange('data_exchange/NASDAQ.tsv', exchange='NASDAQ', delim='\t', clear=True, header=True)
     load_exchange('data_exchange/NYSE.tsv', exchange='NYSE', delim='\t', clear=True, header=True)
+
+def load_csv_dir(dir):
+    """Load all old csv files from a given directory."""
+    for file in os.listdir(dir):
+        if file.endswith(".csv"):
+            print('loading ' + file)
+            load_old_csv(os.path.join(dir,file))
     
