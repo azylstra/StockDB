@@ -63,7 +63,7 @@ def load_csv_dir(dir):
             load_old_csv(os.path.join(dir,file))
     
 def import_from_other(a, b):
-    """Copy all data from b to a"""
+    """Copy all data from a to b."""
     assert isinstance(a, DB) and isinstance(b, DB)
 
     # get all rows from a:
