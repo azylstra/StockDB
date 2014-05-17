@@ -1,7 +1,8 @@
 # Wrap a sqlite3 database into a python class for simplicity
 # 
 # Author: Alex Zylstra
-# Date: 2014/04/13
+# Date: 2014/05/17
+# License: MIT
 
 import os
 import csv
@@ -18,7 +19,7 @@ class DB:
     :date: 2014/04/13
     """
 
-    def __init__(self, fname):
+    def __init__(self, fname=FILE):
         """Class constructor, which opens a connection to the database"""
         # Create file if it doesn't already exist
         if not os.path.exists(fname):

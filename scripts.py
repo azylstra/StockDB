@@ -1,7 +1,8 @@
 # Some scripts for interacting with the stock database
 # 
 # Author: Alex Zylstra
-# Date: 2014/04/13
+# Date: 2014/05/17
+# License: MIT
 
 import os
 import csv
@@ -61,3 +62,12 @@ def load_csv_dir(dir):
             print('loading ' + file)
             load_old_csv(os.path.join(dir,file))
     
+def import_from_other(a, b):
+    """Copy all data from b to a"""
+    assert isinstance(a, DB) and isinstance(b, DB)
+
+    # get all rows from a:
+    query = a.sql_query('''SELECT * from %s;''' % a.TABLE)
+
+    for row in query:
+        b.sql_query('''INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''' % b.TABLE, row)

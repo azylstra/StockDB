@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-# Run the regular daily import of data, with error loggin
+# Run the regular daily import of data, with error logging
+# 
+# Author: Alex Zylstra
+# Date: 2014/05/17
+# License: MIT
 
 from DB import DB, FILE
 from scripts import *
@@ -36,3 +40,5 @@ def run():
         server.quit()
     except Exception as err:
         logging.error("Error: {0}".format(err))
+
+run()

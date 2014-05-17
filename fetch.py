@@ -1,9 +1,10 @@
 # Fetch stock data from Yahoo Finance
 # If databases exist, then append to them
 # Otherwise, start database from scratch.
-#
+# 
 # Author: Alex Zylstra
-# Date: 2014/04/16
+# Date: 2014/05/17
+# License: MIT
 
 import os
 import sys
